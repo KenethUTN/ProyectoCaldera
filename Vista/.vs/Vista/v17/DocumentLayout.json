@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\conta\\Downloads\\VS\\Vista\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4AD4CDE8-972D-4F76-89B8-74E1AEAF1C4A}|C:\\Users\\conta\\Downloads\\VS\\Vista\\Vista|c:\\users\\conta\\downloads\\vs\\vista\\vista\\grid.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4AD4CDE8-972D-4F76-89B8-74E1AEAF1C4A}|C:\\Users\\conta\\Downloads\\VS\\Vista\\Vista|solutionrelative:vista\\grid.aspx.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Grid.aspx.cs",
+              "DocumentMoniker": "C:\\Users\\conta\\Downloads\\VS\\Vista\\Vista\\Grid.aspx.cs",
+              "RelativeDocumentMoniker": "Vista\\Grid.aspx.cs",
+              "ToolTip": "C:\\Users\\conta\\Downloads\\VS\\Vista\\Vista\\Grid.aspx.cs",
+              "RelativeToolTip": "Vista\\Grid.aspx.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-08-01T04:33:30.86Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
