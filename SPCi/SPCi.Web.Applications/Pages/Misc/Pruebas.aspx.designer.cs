@@ -11,27 +11,43 @@ namespace SPCi.Web.Applications.Pages.Misc
 {
 
 
- public partial class Pruebas
- {
+    public partial class Pruebas
+    {
 
-  /// <summary>
-  /// Control grdMenu.
-  /// </summary>
-  /// <remarks>
-  /// Campo generado automáticamente.
-  /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-  /// </remarks>
-  protected global::Telerik.Web.UI.RadGrid grdMenu;
-  protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
-  protected global::Telerik.Web.UI.RadGrid RadGrid1;
+        /// <summary>
+        /// Control JumbotronLayout.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageLayout JumbotronLayout;
 
-  /// <summary>
-  /// Control sdsMenu.
-  /// </summary>
-  /// <remarks>
-  /// Campo generado automáticamente.
-  /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-  /// </remarks>
-  protected global::System.Web.UI.WebControls.SqlDataSource sdsMenu;
- }
+        /// <summary>
+        /// Control RadAjaxPanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxPanel RadAjaxPanel1;
+
+        /// <summary>
+        /// Control RadGrid1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid RadGrid1;
+
+        /// <summary>
+        /// Control RadAjaxManager1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
+    }
 }

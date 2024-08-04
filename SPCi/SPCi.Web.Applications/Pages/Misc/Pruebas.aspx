@@ -5,38 +5,35 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <telerik:RadPageLayout runat="server" ID="JumbotronLayout" CssClass="jumbotron" GridType="Fluid">
-        <Rows>
-            <telerik:LayoutRow>
-                <Columns>
-                    <telerik:LayoutColumn Span="10" SpanMd="12" SpanSm="12" SpanXs="12">
-                        <h1>Grid.</h1>
-                        <h2>Keneth</h2>
-                    </telerik:LayoutColumn>
-                    <telerik:LayoutColumn Span="2" HiddenMd="true" HiddenSm="true" HiddenXs="true">
-                        <img src="images/Thumbnails/Desert.jpg" />
-                    </telerik:LayoutColumn>
-                </Columns>
-            </telerik:LayoutRow>
-        </Rows>
+  
     </telerik:RadPageLayout>
 
-    <asp:Button ID="btnRefresh" runat="server" Text="Actualizar Vista" OnClick="btnRefresh_Click"  />
-    
     <telerik:RadAjaxPanel ID="RadAjaxPanel1" runat="server" CssClass="grid_wrapper">
-        <telerik:RadGrid ID="RadGrid1" runat="server" PageSize="10" PagerStyle-PageButtonCount="5"
-            OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" AllowSorting="true" ShowGroupPanel="true" RenderMode="Auto">
+        <telerik:RadGrid ID="RadGrid1" runat="server" PageSize="50" PagerStyle-PageButtonCount="5"
+            OnNeedDataSource="RadGrid1_NeedDataSource" AllowPaging="True" AllowSorting="true" ShowGroupPanel="false"
+            OnItemCommand="RadGrid1_ItemCommand" OnUpdateCommand="RadGrid1_UpdateCommand" RenderMode="Auto" Width="100%" Height="920px">
             <GroupingSettings ShowUnGroupButton="true" />
-            <ExportSettings ExportOnlyData="true" IgnorePaging="true"></ExportSettings>
+            <ExportSettings ExportOnlyData="true" IgnorePaging="true" FileName="Gestión de Placas y Choferes para Servicio a Granel"></ExportSettings>
+
             <MasterTableView AutoGenerateColumns="False"
-                AllowFilteringByColumn="true" TableLayout="Fixed"
+                AllowFilteringByColumn="false" TableLayout="Fixed"
                 DataKeyNames="lx_vista" CommandItemDisplay="Top"
                 InsertItemPageIndexAction="ShowItemOnFirstPage">
-                <CommandItemSettings ShowExportToCsvButton="true" ShowExportToExcelButton="true" ShowExportToPdfButton="true" ShowExportToWordButton="true" />
+                <CommandItemSettings ShowAddNewRecordButton="true" ShowExportToCsvButton="true" ShowExportToExcelButton="true" ShowExportToPdfButton="true" ShowExportToWordButton="true" AddNewRecordText="Formulario" RefreshText="Actualizar" 
+                    ShowRefreshButton="true"/>
                 <Columns>
-                    <telerik:GridBoundColumn DataField="lx_vista" HeaderText="ID Vista" SortExpression="lx_vista"
-                        UniqueName="lx_vista">
-                        <HeaderStyle Width="100px" />
-                    </telerik:GridBoundColumn>
+                    <telerik:GridTemplateColumn HeaderText="ID Vista" UniqueName="lx_vista">
+                <HeaderStyle Width="150px" />
+                <ItemTemplate>
+                    <asp:Label ID="lblIdVista" runat="server" Text='<%# Eval("lx_vista") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:Label ID="lblIdVistaEdit" runat="server" Text='<%# Bind("lx_vista") %>' />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="lblIdVistaInsert" runat="server" Text='<%# SiguienteIdVista %>' />
+                </InsertItemTemplate>
+            </telerik:GridTemplateColumn>
                     <telerik:GridBoundColumn DataField="lx_ServicioGranel" HeaderText="Servicio Granel" SortExpression="lx_ServicioGranel"
                         UniqueName="lx_ServicioGranel">
                         <HeaderStyle Width="150px" />
@@ -53,39 +50,54 @@
                         UniqueName="cam_placa">
                         <HeaderStyle Width="150px" />
                     </telerik:GridBoundColumn>
-                    <telerik:GridBoundColumn DataField="fecha_hora" HeaderText="Fecha" SortExpression="fecha_hora"
-                        UniqueName="fecha_hora">
-                        <HeaderStyle Width="150px" />
-                    </telerik:GridBoundColumn>
+                    <telerik:GridTemplateColumn HeaderText="Fecha" UniqueName="fecha_hora">
+                <HeaderStyle Width="150px" />
+                <ItemTemplate>
+                    <asp:Label ID="lblFechaHora" runat="server" Text='<%# Eval("fecha_hora") %>' />
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:Label ID="lblFechaHoraEdit" runat="server" Text='<%# Bind("fecha_hora") %>' />
+                </EditItemTemplate>
+                <InsertItemTemplate>
+                    <asp:Label ID="lblFechaHoraInsert" runat="server" Text='<%# DateTime.Now.ToString("G") %>' />
+                </InsertItemTemplate>
+            </telerik:GridTemplateColumn>
                     <telerik:GridTemplateColumn HeaderText="Estado" UniqueName="estado">
+                        <HeaderStyle Width="150px" />
                         <ItemTemplate>
                             <asp:Label ID="lblEstado" runat="server" 
-                                Text='<%# Convert.ToBoolean(Eval("estado")) ? "✔" : "✘" %>' />
+                                Text='<%# Eval("estado") != DBNull.Value ? (Convert.ToBoolean(Eval("estado")) ? "✔" : "✘") : "" %>' />
                         </ItemTemplate>
                     </telerik:GridTemplateColumn>
-                    <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Edit Command Column">
+                    <telerik:GridEditCommandColumn UniqueName="EditColumn" HeaderText="Editar Columna">
                         <HeaderStyle Width="70px" />
                     </telerik:GridEditCommandColumn>
-                    <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Delete Command Column">
+                    <telerik:GridButtonColumn CommandName="Delete" Text="Delete" UniqueName="DeleteColumn" HeaderText="Borrar Columna"
+                        ConfirmText="¿Está seguro que desea eliminar este registro?" ConfirmDialogType="RadWindow"
+                        ConfirmTitle="Confirmación de eliminación">
                         <HeaderStyle Width="70px" />
                     </telerik:GridButtonColumn>
                 </Columns>
             </MasterTableView>
+
             <ClientSettings AllowColumnsReorder="true" AllowColumnHide="true" AllowDragToGroup="true">
                 <Selecting AllowRowSelect="true" />
                 <Scrolling AllowScroll="true" UseStaticHeaders="true" />
             </ClientSettings>
         </telerik:RadGrid>
+
+        
+
     </telerik:RadAjaxPanel>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
-    <AjaxSettings>
-        <telerik:AjaxSetting AjaxControlID="btnRefresh">
-            <UpdatedControls>
-                <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
-            </UpdatedControls>
-        </telerik:AjaxSetting>
-    </AjaxSettings>
-</telerik:RadAjaxManager>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" HeaderText="Borrar Columna">
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="btnRefresh">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RadGrid1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="FooterContent" runat="server">
